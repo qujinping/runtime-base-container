@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+echo
+echo "===> Assemble-runtime started at $(date)"
+echo
+START=$SECONDS
+
+# Unconditionally print elapsed build time at exit
+function finish {
+  echo "===> Elapsed time: $(($SECONDS - $START)) seconds"
+}
+trap finish EXIT
+
+echo "---> Preparing source..."
+
+echo
+echo "===> Assemble-runtime completed at $(date)"
