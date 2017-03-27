@@ -21,6 +21,7 @@ ENV \
     PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/app-root/bin
 
 COPY ./assemble-runtime /usr/libexec/s2i/ 
+COPY bin/ /usr/bin
 
 # install utils
 RUN rpmkeys --import file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
@@ -45,8 +46,12 @@ RUN rpmkeys --import file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
   useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin \
       -c "Default Application User" default && \
   mkdir -p /opt/app-root && \
+  mkdir -p /opt/app-root/bin && \
+  mkdir -p /opt/app-root/libs && \
+  mkdir -p /opt/app-root/etc && \
+  mkdir -p /opt/app-root/data && \
+  mkdir -p /opt/app-root/scripts && \
   chown -R 1001:0 /opt/app-root
-
 
 WORKDIR ${HOME}
 
@@ -54,4 +59,4 @@ USER 1001
 
 # For systemd usage this changes to /usr/sbin/init
 # Keeping it as /bin/bash for compatability with previous
-CMD ["/bin/bash"]
+CMD ["/opt/app-root/scripts/run"]
