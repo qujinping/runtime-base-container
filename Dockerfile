@@ -7,7 +7,7 @@ LABEL \
       # DEPRECATED: This label will be kept here for backward compatibility.
       io.s2i.scripts-url=image:///usr/libexec/s2i \
       # default mapping items of runtime-artifact`
-      io.openshift.s2i.assemble-input-files=/opt/app-root/etc;/opt/app-root/data;/opt/app-root/bin;/opt/app-root/libs
+      io.openshift.s2i.assemble-input-files=/opt/app-root/etc;/opt/app-root/data;/opt/app-root/bin;/opt/app-root/libs;/opt/app-root/scripts
 
 ENV \
     # DEPRECATED: Use above LABEL instead, because this will be removed in future versions.
