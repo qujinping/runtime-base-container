@@ -1,4 +1,4 @@
-FROM core/centos:7.3
+FROM core/centos:7
 MAINTAINER qujinping
 
 LABEL \
@@ -57,6 +57,4 @@ WORKDIR ${HOME}
 
 USER 1001
 
-# For systemd usage this changes to /usr/sbin/init
-# Keeping it as /bin/bash for compatability with previous
 CMD ["/opt/app-root/scripts/run"]
