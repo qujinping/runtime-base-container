@@ -36,10 +36,13 @@ RUN rpmkeys --import file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7 && \
   bind-utils \
   openssh-server \
   openssh-clients \
+  nss_wrapper \
   wget \
   which" && \
   mkdir -p ${HOME}/.pki/nssdb && \
   chown -R 1001:0 ${HOME}/.pki && \
+  yum -y install epel-release && \
+  yum update -y && \
   yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
   rpm -V $INSTALL_PKGS && \
   yum clean all -y && \
